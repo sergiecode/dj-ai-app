@@ -103,7 +103,20 @@ IA/
 # -Clean    Clean up before starting
 ```
 
-### 4. Access the Application
+### 4. Validate System (Recommended)
+
+```powershell
+# Run comprehensive system validation
+.\scripts\validate.ps1
+
+# Quick validation (faster)
+.\scripts\validate.ps1 -Quick
+
+# Auto-repair issues
+.\scripts\validate.ps1 -Repair
+```
+
+### 5. Access the Application
 
 Once started, the system will be available at:
 
@@ -250,6 +263,73 @@ docker-compose up -d --scale dj-ai-core=2
 # 4. View logs for debugging
 docker-compose logs -f
 ```
+
+## 🧪 Testing & Quality Assurance
+
+### Test Setup
+
+```powershell
+# Setup test environment (run once)
+.\scripts\setup-tests.ps1
+
+# This will:
+# - Install testing dependencies
+# - Create test directories
+# - Set up pytest configuration
+```
+
+### Running Tests
+
+```powershell
+# Run all tests
+.\scripts\run-tests.ps1
+
+# Run specific test types
+.\scripts\run-tests.ps1 -TestType unit        # Unit tests only
+.\scripts\run-tests.ps1 -TestType integration # Integration tests only
+.\scripts\run-tests.ps1 -TestType e2e         # End-to-end tests only
+
+# Run with coverage report
+.\scripts\run-tests.ps1 -Coverage
+
+# Generate HTML test report
+.\scripts\run-tests.ps1 -Html
+
+# Fast mode (skip slow tests)
+.\scripts\run-tests.ps1 -Fast
+```
+
+### Test Categories
+
+- **Unit Tests** (`tests/unit/`): Configuration validation, file structure tests
+- **Integration Tests** (`tests/integration/`): Service communication, API integration
+- **End-to-End Tests** (`tests/e2e/`): Complete workflow testing
+- **Fixtures** (`tests/fixtures/`): Test data and sample files
+
+### System Validation
+
+```powershell
+# Comprehensive system validation
+.\scripts\validate.ps1
+
+# Quick validation check
+.\scripts\validate.ps1 -Quick
+
+# Auto-repair common issues
+.\scripts\validate.ps1 -Repair
+
+# Verbose output for debugging
+.\scripts\validate.ps1 -Verbose
+```
+
+### Continuous Integration
+
+The project includes GitHub Actions workflow for automated testing:
+- ✅ Configuration validation
+- ✅ Unit test execution
+- ✅ Integration testing with Docker
+- ✅ End-to-end workflow testing
+- ✅ Security vulnerability scanning
 
 ---
 

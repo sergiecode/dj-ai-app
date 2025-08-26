@@ -1,0 +1,53 @@
+# DJ AI App - Docker ignore file
+# Author: Sergie Code
+
+# Git files
+.git
+.gitignore
+README.md
+
+# Environment files
+.env
+.env.*
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp
+
+# Node modules (if any local development)
+node_modules/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Docker files
+docker-compose.override.yml
+
+# SSL certificates (security)
+config/ssl/*.key
+config/ssl/*.pem
+config/ssl/*.crt
+
+# User data
+data/uploads/*
+!data/uploads/.gitkeep
+
+# Models (can be large)
+data/models/*
+!data/models/.gitkeep

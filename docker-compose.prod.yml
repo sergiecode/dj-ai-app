@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  dj-ai-core:
+    build:
+      target: production
+    environment:
+      - API_DEBUG=false
+      - LOG_LEVEL=INFO
+      - API_WORKERS=4
+    command: ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "4"]
+
+  dj-ai-frontend:
+    build:
+      target: production
+    environment:
+      - NODE_ENV=production
+      - REACT_APP_API_URL=http://localhost:8000
+    command: ["serve", "-s", "build", "-l", "3000"]
+
+  nginx:
+    profiles: []  # Always include nginx in production
